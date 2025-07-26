@@ -4,54 +4,27 @@ public class HelloWorld {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        double[] notas = {
-                100.00,
-                50.00,
-                20.00,
-                10.00,
-                5.00,
-                2.00
-        };
+        int[] notas = {10000, 5000, 2000, 1000, 500, 200};
+        int[] moedas = {100, 50, 25, 10, 5, 1};
+        int valor, qtde;
+        double input;
 
-        double[] moedas = {
-                1,
-                0.50,
-                0.25,
-                0.10,
-                0.05,
-                0.01
-        };
+        input = scanner.nextDouble();
 
-        String inputValor = "";
-        Double valor, aux = 0.00;
-
-        inputValor = scanner.next();
-
-        valor = Double.parseDouble(inputValor);
-
-        System.out.println("\nNotas:");
-        for (int i = 0; i < 6; i++) {
-            if (valor >= 2) {
-                aux = valor / notas[i];
-                
-                if (aux >= 1) {
-                    aux = Math.round(aux) * notas[i];
-                    valor -= aux;
-                }
-            }
-            System.out.println(aux + " notas de R$" + String.format("%.2f", notas[i]));
+        valor = (int) Math.round(input * 100);
+        
+        System.out.println("NOTAS:");
+        for (int nota : notas) {
+            qtde = valor / nota;
+            System.out.printf("%d Nota(s) de R$ %.2f\n", qtde, nota / 100.0);
+            valor %= nota;
         }
         
-        System.out.println("\nMoedas:");
-        for (int i = 0; i < 6; i++) {
-            aux = valor / moedas[i];
-
-            if (aux >= 1) {
-                    aux = Math.round(aux) * moedas[i];
-                    valor -= aux;
-                }
-
-            System.out.println(aux + " moedas de R$" + String.format("%.2f", moedas[i]));
+        System.out.println("MOEDAS:");
+        for (int moeda : moedas) {
+            qtde = valor / moeda;
+            System.out.printf("%d moeda(s) de R$ %.2f\n", qtde, moeda / 100.0);
+            valor %= moeda;
         }
 
         scanner.close();
