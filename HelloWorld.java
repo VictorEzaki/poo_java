@@ -10,7 +10,7 @@ public class HelloWorld {
         double input;
 
         input = scanner.nextDouble();
-
+        
         valor = (int) Math.round(input * 100);
         
         System.out.println("NOTAS:");
