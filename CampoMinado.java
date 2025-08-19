@@ -23,13 +23,8 @@ public class CampoMinado {
         int linha;
         char coluna;
 
-        int[][] randomBomb;
+        int[20] randomBomb;
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                randomBomb[i][j] = random.nextInt(10);
-            }
-        }
 
         do {
             System.out.printf("Digite a linha: ");
